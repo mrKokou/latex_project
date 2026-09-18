@@ -1,0 +1,352 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.2cm}
+
+% \ieme défini manuellement (babel indisponible)
+\newcommand{\ieme}{\textsuperscript{ème}}
+\newcommand{\ier}{\textsuperscript{er}}
+
+\title{\textbf{CORRECTION DES FACTORISATIONS} \\ 4\ieme/3\ieme}
+\author{N.MH}
+\date{31 juillet 2026}
+
+\begin{document}
+	\maketitle
+	
+	\section*{I -- FACTORISATION AVEC FACTEUR COMMUN}
+	
+	\subsection*{Série A}
+	
+	\[
+	\begin{aligned}
+		A_1(x) &= 3x+3 = 3\times x + 3\times 1 = 3(x+1)\\[4pt]
+		A_2(x) &= 3x+6 = 3\times x + 3\times 2 = 3(x+2)\\[4pt]
+		A_3(x) &= 6x+9 = 3\times 2x + 3\times 3 = 3(2x+3)\\[4pt]
+		A_4(x) &= 12x+18 = 6\times 2x + 6\times 3 = 6(2x+3)\\[4pt]
+		A_5(x) &= 4x-4 = 4\times x - 4\times 1 = 4(x-1)\\[4pt]
+		A_6(x) &= 6x-18 = 6\times x - 6\times 3 = 6(x-3)\\[4pt]
+		A_7(x) &= 5x^2+12x = x\times 5x + x\times 12 = x(5x+12)\\[4pt]
+		A_8(x) &= 3x^2-12 = 3\times x^2 - 3\times 4 = 3(x^2-4) = 3(x-2)(x+2)\\[4pt]
+		A_9(x) &= 4x^3+3x = x\times 4x^2 + x\times 3 = x(4x^2+3)\\[4pt]
+		A_{10}(x) &= 6x^2-3 = 3\times 2x^2 - 3\times 1 = 3(2x^2-1)\\[4pt]
+		A_{11}(x) &= x-7x^3 = x\times 1 - x\times 7x^2 = x(1-7x^2)\\[4pt]
+		A_{12}(x) &= 4x^3-16y^2 = 4\times x^3 - 4\times 4y^2 = 4(x^3-4y^2)
+	\end{aligned}
+	\]
+	
+	\medskip
+	\textbf{Cas particulier détaillé : $A_{13}(x)$}
+	\[
+	\begin{aligned}
+		A_{13}(x) &= 12xy^2 - 3y^2x\\
+		&\text{On remarque que } 3y^2x = 3xy^2 \text{ (commutativité de la multiplication)}\\
+		A_{13}(x) &= 12xy^2 - 3xy^2\\
+		&\text{Les deux termes contiennent le facteur commun } 3xy^2 :\\
+		&\quad 12xy^2 = 3xy^2 \times 4 \qquad \text{et} \qquad 3xy^2 = 3xy^2 \times 1\\
+		A_{13}(x) &= 3xy^2 \times 4 - 3xy^2 \times 1\\
+		&= 3xy^2(4-1)\\
+		&= 3xy^2 \times 3\\
+		&= 9xy^2
+	\end{aligned}
+	\]
+	\emph{Remarque : ici il n'y a pas vraiment de "facteur binôme" à extraire ; il s'agit de réduire deux termes semblables, ce qui revient à factoriser par $3xy^2$.}
+	
+	\[
+	\begin{aligned}
+		A_{14}(x) &= 7x^2+x = x\times 7x + x\times 1 = x(7x+1)\\[4pt]
+		A_{15}(x) &= 3x^2+5xy = x\times 3x + x\times 5y = x(3x+5y)\\[4pt]
+		A_{16}(x) &= x-5x^2 = x\times 1 - x\times 5x = x(1-5x)\\[4pt]
+		A_{17}(x) &= 7xy+21x^2 = 7x\times y + 7x\times 3x = 7x(y+3x)\\[4pt]
+		A_{18}(x) &= -x^2+3x = x\times(-x) + x\times 3 = x(3-x)
+	\end{aligned}
+	\]
+	
+	\subsection*{Série B}
+	
+	\[
+	\begin{aligned}
+		B_1(x) &= 4x(5+3x)+7(5+3x)\\
+		&\text{Facteur commun : } (5+3x)\\
+		&= (5+3x)\big[4x+7\big]\\[4pt]
+		B_2(x) &= 2(3x-2)-9x(3x-2)\\
+		&\text{Facteur commun : } (3x-2)\\
+		&= (3x-2)\big[2-9x\big]\\[4pt]
+		B_3(x) &= (x+4)(x-4)+(x+4)(x-2)+(x+4)^2\\
+		&\text{Facteur commun : } (x+4)\\
+		&= (x+4)\big[(x-4)+(x-2)+(x+4)\big]\\
+		&\text{On développe le crochet : } (x-4)+(x-2)+(x+4) = 3x-2\\
+		&= (x+4)(3x-2)\\[4pt]
+		B_4(x) &= 3(x+4)(x-1)+5(x-1)(x+3)\\
+		&\text{Facteur commun : } (x-1)\\
+		&= (x-1)\big[3(x+4)+5(x+3)\big]\\
+		&\text{Crochet : } 3(x+4)+5(x+3) = 3x+12+5x+15 = 8x+27\\
+		&= (x-1)(8x+27)\\[4pt]
+		B_5(x) &= (2x-3)^2+3(x+5)(2x-3)\\
+		&\text{Facteur commun : } (2x-3)\\
+		&= (2x-3)\big[(2x-3)+3(x+5)\big]\\
+		&\text{Crochet : } (2x-3)+3(x+5) = 2x-3+3x+15 = 5x+12\\
+		&= (2x-3)(5x+12)\\[4pt]
+		B_6(x) &= (x+2)(2x-3)+3(x+2)\\
+		&\text{Facteur commun : } (x+2)\\
+		&= (x+2)\big[(2x-3)+3\big] = (x+2)(2x) = 2x(x+2)\\[4pt]
+		B_7(x) &= (x+3)(x+2)+(x+3)(2x+3)\\
+		&\text{Facteur commun : } (x+3)\\
+		&= (x+3)\big[(x+2)+(2x+3)\big] = (x+3)(3x+5)\\[4pt]
+		B_8(x) &= (4x+3)(x+1)+5(4x+3)\\
+		&\text{Facteur commun : } (4x+3)\\
+		&= (4x+3)\big[(x+1)+5\big] = (4x+3)(x+6)\\[4pt]
+		B_9(x) &= 27x(x+2)-(x+2)\\
+		&\text{Facteur commun : } (x+2)\\
+		&= (x+2)(27x-1)\\[4pt]
+		B_{10}(x) &= (2x-3)(2x-5)-2(2x-3)^2\\
+		&\text{Facteur commun : } (2x-3)\\
+		&= (2x-3)\big[(2x-5)-2(2x-3)\big]\\
+		&\text{Crochet : } (2x-5)-2(2x-3) = 2x-5-4x+6 = -2x+1\\
+		&= (2x-3)(1-2x)\\[4pt]
+		B_{11}(x) &= (x-3)(2x-1)+(x-3)(3x+1)\\
+		&\text{Facteur commun : } (x-3)\\
+		&= (x-3)\big[(2x-1)+(3x+1)\big] = (x-3)(5x) = 5x(x-3)\\[4pt]
+		B_{12}(x) &= (x-4)^2+(2x-5)(x-4)+(-x-3)(x-4)\\
+		&\text{Facteur commun : } (x-4)\\
+		&= (x-4)\big[(x-4)+(2x-5)+(-x-3)\big]\\
+		&\text{Crochet : } (x-4)+(2x-5)+(-x-3) = 2x-12\\
+		&= (x-4)(2x-12) = 2(x-4)(x-6)\\[4pt]
+		B_{13}(x) &= (5x-1)(x+4)+(x+4)^2\\
+		&\text{Facteur commun : } (x+4)\\
+		&= (x+4)\big[(5x-1)+(x+4)\big] = (x+4)(6x+3) = 3(x+4)(2x+1)\\[4pt]
+		B_{14}(x) &= (x+2)+(2x+4)(8x+4)-(x+2)\\
+		&\text{Les termes } (x+2) \text{ et } -(x+2) \text{ s'annulent}\\
+		&= (2x+4)(8x+4) = 2(x+2)\times 4(2x+1) = 8(x+2)(2x+1)\\[4pt]
+		B_{15}(x) &= (5x-2)(x+3)+2x(-x-3)\\
+		&\text{On remarque : } -x-3 = -(x+3)\\
+		&= (5x-2)(x+3) - 2x(x+3)\\
+		&\text{Facteur commun : } (x+3)\\
+		&= (x+3)\big[(5x-2)-2x\big] = (x+3)(3x-2)\\[4pt]
+		B_{16}(x) &= (x+3)(2x-5)+(5-2x)(2x+3)\\
+		&\text{On remarque : } 5-2x = -(2x-5)\\
+		&= (x+3)(2x-5) - (2x-5)(2x+3)\\
+		&\text{Facteur commun : } (2x-5)\\
+		&= (2x-5)\big[(x+3)-(2x+3)\big] = (2x-5)(-x) = -x(2x-5)\\[4pt]
+		B_{17}(x) &= (3x-4)(x-2)-(6x-8)(x-3)\\
+		&\text{On remarque : } 6x-8 = 2(3x-4)\\
+		&= (3x-4)(x-2) - 2(3x-4)(x-3)\\
+		&\text{Facteur commun : } (3x-4)\\
+		&= (3x-4)\big[(x-2)-2(x-3)\big]\\
+		&\text{Crochet : } (x-2)-2(x-3) = x-2-2x+6 = -x+4\\
+		&= (3x-4)(4-x)
+	\end{aligned}
+	\]
+	
+	\section*{II -- FACTORISATION AVEC IDENTITÉ REMARQUABLE}
+	
+	\[
+	\begin{aligned}
+		C_1(x) &= (2x+1)^2-(x+1)^2\\
+		&\text{Forme } a^2-b^2 \text{ avec } a=2x+1,\ b=x+1\\
+		&= \big[(2x+1)-(x+1)\big]\big[(2x+1)+(x+1)\big]\\
+		&\text{On calcule : } a-b = x,\qquad a+b = 3x+2\\
+		&= x(3x+2)\\[6pt]
+		C_2(x) &= (x+2y)^2-(x+2y)^2\\
+		&\text{Les deux termes sont \emph{identiques} : leur différence est nulle.}\\
+		&= 0\\
+		&\text{\emph{Remarque : il s'agit très probablement d'une coquille dans l'énoncé.}}\\
+		&\text{\emph{Si l'expression voulue était } } (x+2y)^2-(x-2y)^2 \text{ :}\\
+		&\qquad = \big[(x+2y)-(x-2y)\big]\big[(x+2y)+(x-2y)\big] = (4y)(2x) = 8xy\\[6pt]
+		C_3(x) &= (3x+5)^2-4(x-2)^2\\
+		&\text{On écrit } 4(x-2)^2 = \big[2(x-2)\big]^2 = (2x-4)^2\\
+		&\text{Forme } a^2-b^2 \text{ avec } a=3x+5,\ b=2x-4\\
+		&= \big[(3x+5)-(2x-4)\big]\big[(3x+5)+(2x-4)\big]\\
+		&a-b = x+9,\qquad a+b = 5x+1\\
+		&= (x+9)(5x+1)\\[6pt]
+		C_4(x) &= 9(x+2)^2-64\\
+		&\text{On écrit } 9(x+2)^2 = \big[3(x+2)\big]^2 = (3x+6)^2 \text{ et } 64=8^2\\
+		&= \big[(3x+6)-8\big]\big[(3x+6)+8\big]\\
+		&= (3x-2)(3x+14)\\[6pt]
+		C_5(x) &= (2x-1)^2-2(2x-1)(x-4)+(x-2)^2\\
+		&\text{\emph{Remarque : pour obtenir la forme } } a^2-2ab+b^2\text{, le dernier terme}\\
+		&\text{\emph{doit être } } (x-4)^2 \text{ \emph{et non} } (x-2)^2 \text{ \emph{(sinon l'expression ne se factorise pas simplement).}}\\
+		&\text{En supposant } (x-4)^2\text{, avec } a=2x-1,\ b=x-4 :\\
+		&= (a-b)^2 = \big[(2x-1)-(x-4)\big]^2 = (x+3)^2\\[6pt]
+		C_6(x) &= 4(x+1)^2+4(x+1)(x-2)+(x-2)^2\\
+		&\text{On pose } u=2(x+1),\ v=x-2 : \text{ alors } u^2=4(x+1)^2,\ 2uv=4(x+1)(x-2),\ v^2=(x-2)^2\\
+		&= (u+v)^2 = \big[2(x+1)+(x-2)\big]^2\\
+		&2(x+1)+(x-2) = 2x+2+x-2 = 3x\\
+		&= (3x)^2 = 9x^2\\[6pt]
+		C_7(x) &= 25(x+2)^2-16(x-2)^2\\
+		&\text{On écrit } 25(x+2)^2=\big[5(x+2)\big]^2,\ 16(x-2)^2=\big[4(x-2)\big]^2\\
+		&= \big[5(x+2)-4(x-2)\big]\big[5(x+2)+4(x-2)\big]\\
+		&\text{Premier facteur : } 5x+10-4x+8 = x+18\\
+		&\text{Second facteur : } 5x+10+4x-8 = 9x+2\\
+		&= (x+18)(9x+2)\\[6pt]
+		C_8(x) &= 9(x+1)^2-(x-4)^2\\
+		&= \big[3(x+1)\big]^2-(x-4)^2\\
+		&= \big[3(x+1)-(x-4)\big]\big[3(x+1)+(x-4)\big]\\
+		&\text{Premier facteur : } 3x+3-x+4 = 2x+7\\
+		&\text{Second facteur : } 3x+3+x-4 = 4x-1\\
+		&= (2x+7)(4x-1)\\[6pt]
+		C_9(x) &= (3x+5)^2-4x^2 = (3x+5)^2-(2x)^2\\
+		&= \big[(3x+5)-2x\big]\big[(3x+5)+2x\big]\\
+		&= (x+5)(5x+5) = 5(x+5)(x+1)\\[6pt]
+		C_{10}(x) &= 9x^2-(2x+5)^2 = (3x)^2-(2x+5)^2\\
+		&= \big[3x-(2x+5)\big]\big[3x+(2x+5)\big]\\
+		&= (x-5)(5x+5) = 5(x-5)(x+1)
+	\end{aligned}
+	\]
+	
+	\section*{III -- FACTORISATION UTILISANT IDENTITÉS REMARQUABLES ET FACTEUR COMMUN}
+	
+	\[
+	\begin{aligned}
+		D_1(x) &= 4x^2-9+3(x+3)(2x-3)\\
+		&\text{On reconnaît } 4x^2-9=(2x-3)(2x+3)\\
+		&= (2x-3)(2x+3)+3(x+3)(2x-3)\\
+		&\text{Facteur commun } (2x-3) :\\
+		&= (2x-3)\big[(2x+3)+3(x+3)\big]\\
+		&\text{Crochet : } (2x+3)+3x+9 = 5x+12\\
+		&= (2x-3)(5x+12)\\[6pt]
+		D_2(x) &= 9x^2-30x+25+(2x+1)(x+1)(3x-5)\\
+		&\text{On reconnaît } 9x^2-30x+25=(3x-5)^2\\
+		&= (3x-5)^2+(3x-5)(2x+1)(x+1)\\
+		&\text{Facteur commun } (3x-5) :\\
+		&= (3x-5)\big[(3x-5)+(2x+1)(x+1)\big]\\
+		&(2x+1)(x+1) = 2x^2+3x+1\\
+		&\text{Crochet : } (3x-5)+2x^2+3x+1 = 2x^2+6x-4 = 2(x^2+3x-2)\\
+		&= 2(3x-5)(x^2+3x-2)\\
+		&\text{\emph{($x^2+3x-2$ n'a pas de racines rationnelles, on s'arrête là)}}\\[6pt]
+		D_3(x) &= (2x+1)^2+2(2x+1)(x+1)+4x^2+4x+1\\
+		&\text{On reconnaît } 4x^2+4x+1 = (2x+1)^2\\
+		&= (2x+1)^2+2(2x+1)(x+1)+(2x+1)^2 = 2(2x+1)^2+2(2x+1)(x+1)\\
+		&\text{Facteur commun } 2(2x+1) :\\
+		&= 2(2x+1)\big[(2x+1)+(x+1)\big] = 2(2x+1)(3x+2)\\[6pt]
+		D_4(x) &= x^2+2x+1-(x+4)(6x+6)\\
+		&\text{On reconnaît } x^2+2x+1=(x+1)^2 \text{ et } 6x+6=6(x+1)\\
+		&= (x+1)^2-6(x+4)(x+1)\\
+		&\text{Facteur commun } (x+1) :\\
+		&= (x+1)\big[(x+1)-6(x+4)\big]\\
+		&\text{Crochet : } x+1-6x-24 = -5x-23\\
+		&= -(x+1)(5x+23)\\[6pt]
+		D_5(x) &= 4x^2-25+(2x-5)\\
+		&\text{On reconnaît } 4x^2-25=(2x-5)(2x+5)\\
+		&= (2x-5)(2x+5)+(2x-5)\\
+		&\text{Facteur commun } (2x-5) :\\
+		&= (2x-5)\big[(2x+5)+1\big] = (2x-5)(2x+6) = 2(2x-5)(x+3)\\[6pt]
+		D_6(x) &= (9x^2-4)+(9x^2-12x+4)\\
+		&\text{On reconnaît } 9x^2-4=(3x-2)(3x+2) \text{ et } 9x^2-12x+4=(3x-2)^2\\
+		&= (3x-2)(3x+2)+(3x-2)^2\\
+		&\text{Facteur commun } (3x-2) :\\
+		&= (3x-2)\big[(3x+2)+(3x-2)\big] = (3x-2)(6x) = 6x(3x-2)\\[6pt]
+		D_7(x) &= 16x^2-25+(x+3)(4x+5)\\
+		&\text{On reconnaît } 16x^2-25=(4x-5)(4x+5)\\
+		&= (4x-5)(4x+5)+(x+3)(4x+5)\\
+		&\text{Facteur commun } (4x+5) :\\
+		&= (4x+5)\big[(4x-5)+(x+3)\big] = (4x+5)(5x-2)\\[6pt]
+		D_8(x) &= (x+3)(x-1)+x^2-1\\
+		&\text{On reconnaît } x^2-1=(x-1)(x+1)\\
+		&= (x+3)(x-1)+(x-1)(x+1)\\
+		&\text{Facteur commun } (x-1) :\\
+		&= (x-1)\big[(x+3)+(x+1)\big] = (x-1)(2x+4) = 2(x-1)(x+2)\\[6pt]
+		D_9(x) &= (2x-1)^2-(5x+1)(6x-3)+(3x-1)(5x+3)\\
+		&\text{On développe chaque terme :}\\
+		&(2x-1)^2 = 4x^2-4x+1\\
+		&(5x+1)(6x-3) = 30x^2-9x-3\\
+		&(3x-1)(5x+3) = 15x^2+4x-3\\
+		&D_9(x) = (4x^2-4x+1)-(30x^2-9x-3)+(15x^2+4x-3)\\
+		&= (4-30+15)x^2+(-4+9+4)x+(1+3-3)\\
+		&= -11x^2+9x+1\\
+		&\text{\emph{Le discriminant vaut } } \Delta = 9^2-4(-11)(1) = 81+44 = 125,\\
+		&\text{\emph{qui n'est pas un carré parfait : cette expression ne se factorise pas}}\\
+		&\text{\emph{par des nombres rationnels (probable coquille dans l'énoncé).}}\\[6pt]
+		D_{10}(x) &= x^2-16+(x+4)(2x-1)\\
+		&\text{On reconnaît } x^2-16=(x-4)(x+4)\\
+		&= (x-4)(x+4)+(x+4)(2x-1)\\
+		&\text{Facteur commun } (x+4) :\\
+		&= (x+4)\big[(x-4)+(2x-1)\big] = (x+4)(3x-5)\\[6pt]
+		D_{11}(x) &= (3x-1)^2-9x^2+1-(x-5)(3x-1)\\
+		&\text{On développe } (3x-1)^2 = 9x^2-6x+1\\
+		&(3x-1)^2-9x^2+1 = 9x^2-6x+1-9x^2+1 = -6x+2 = -2(3x-1)\\
+		&D_{11}(x) = -2(3x-1)-(x-5)(3x-1)\\
+		&\text{Facteur commun } (3x-1) :\\
+		&= (3x-1)\big[-2-(x-5)\big] = (3x-1)(3-x)\\[6pt]
+		D_{12}(x) &= 2x+18-(x^2-81)\\
+		&\text{On reconnaît } 2x+18=2(x+9) \text{ et } x^2-81=(x-9)(x+9)\\
+		&= 2(x+9)-(x-9)(x+9)\\
+		&\text{Facteur commun } (x+9) :\\
+		&= (x+9)\big[2-(x-9)\big] = (x+9)(11-x)\\[6pt]
+		D_{13}(x) &= (3x-2)(2x-1)-9x^2+4\\
+		&\text{On reconnaît } 9x^2-4=(3x-2)(3x+2), \text{ donc } -9x^2+4=-(3x-2)(3x+2)\\
+		&= (3x-2)(2x-1)-(3x-2)(3x+2)\\
+		&\text{Facteur commun } (3x-2) :\\
+		&= (3x-2)\big[(2x-1)-(3x+2)\big] = (3x-2)(-x-3) = -(3x-2)(x+3)
+	\end{aligned}
+	\]
+	
+	\section*{FACTORISATION PLUS DIFFICILE !!}
+	
+	\[
+	\begin{aligned}
+		E_1(x) &= x^2-4x+3,\qquad \text{avec } 3=4-1\\
+		&= x^2-4x+4-1\\
+		&\text{On reconnaît le début d'un carré parfait : } x^2-4x+4=(x-2)^2\\
+		&= (x-2)^2-1\\
+		&\text{Forme } a^2-b^2 \text{ avec } a=x-2,\ b=1\\
+		&= (x-2-1)(x-2+1)\\
+		&= (x-3)(x-1)
+	\end{aligned}
+	\]
+	
+	\section*{AUTRES FACTORISATION}
+	
+	\[
+	\begin{aligned}
+		F_1(x) &= x(3x^2+x)-3(9x+3)\\
+		&x(3x^2+x) = 3x^3+x^2 = x^2(3x+1)\\
+		&3(9x+3) = 27x+9 = 9(3x+1)\\
+		&F_1(x) = x^2(3x+1)-9(3x+1)\\
+		&\text{Facteur commun } (3x+1) :\\
+		&= (3x+1)(x^2-9) = (3x+1)(x-3)(x+3)\\[6pt]
+		F_2(x) &= (2x-3)(3x+5)^2-8(4x-6)\\
+		&\text{On reconnaît } 4x-6=2(2x-3)\\
+		&8(4x-6) = 16(2x-3)\\
+		&F_2(x) = (2x-3)(3x+5)^2-16(2x-3)\\
+		&\text{Facteur commun } (2x-3) :\\
+		&= (2x-3)\big[(3x+5)^2-16\big]\\
+		&(3x+5)^2-16 = (3x+5)^2-4^2 = (3x+1)(3x+9) = 3(3x+1)(x+3)\\
+		&= 3(2x-3)(3x+1)(x+3)\\[6pt]
+		F_3(x) &= 5(x-1)^2-20\\
+		&= 5\big[(x-1)^2-4\big]\\
+		&= 5\big[(x-1)-2\big]\big[(x-1)+2\big]\\
+		&= 5(x-3)(x+1)\\[6pt]
+		F_4(x) &= 2x^2-2+5(x-1)^2-20\\
+		&2x^2-2 = 2(x^2-1) = 2(x-1)(x+1)\\
+		&5(x-1)^2-20 = 5(x-3)(x+1) \quad \text{(cf. } F_3\text{)}\\
+		&F_4(x) = 2(x-1)(x+1)+5(x-3)(x+1)\\
+		&\text{Facteur commun } (x+1) :\\
+		&= (x+1)\big[2(x-1)+5(x-3)\big]\\
+		&\text{Crochet : } 2x-2+5x-15 = 7x-17\\
+		&= (x+1)(7x-17)\\[6pt]
+		F_5(x) &= 2x^2-2+x^2+x = 3x^2+x-2\\
+		&\text{On cherche deux nombres de produit } 3\times(-2)=-6 \text{ et de somme } 1 : 3 \text{ et } -2\\
+		&3x^2+x-2 = 3x^2+3x-2x-2 = 3x(x+1)-2(x+1)\\
+		&= (x+1)(3x-2)\\[6pt]
+		F_6(x) &= (5x-1)(x+2)-5x+1\\
+		&\text{On reconnaît } -5x+1 = -(5x-1)\\
+		&= (5x-1)(x+2)-(5x-1)\\
+		&\text{Facteur commun } (5x-1) :\\
+		&= (5x-1)\big[(x+2)-1\big] = (5x-1)(x+1)\\[6pt]
+		F_7(x) &= (x+2)^2-(3x+6)(1-x)-(x+2)\\
+		&\text{On reconnaît } 3x+6 = 3(x+2)\\
+		&= (x+2)^2-3(x+2)(1-x)-(x+2)\\
+		&\text{Facteur commun } (x+2) :\\
+		&= (x+2)\big[(x+2)-3(1-x)-1\big]\\
+		&\text{Crochet : } x+2-3+3x-1 = 4x-2 = 2(2x-1)\\
+		&= 2(x+2)(2x-1)
+	\end{aligned}
+	\]
+	
+	\vspace{1cm}
+	\hfill \textit{FIN !!! mariekokou06@gmail.com}
+	
+\end{document}

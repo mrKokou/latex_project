@@ -1,0 +1,565 @@
+\documentclass[12pt,a4paper]{article}
+
+% ===== PACKAGES =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=15pt}
+
+% ===== FILIGRANE =====
+\AddToShipoutPictureBG{%
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[rotate=45, scale=5, text opacity=0.05, color=blue!60!black]
+		at (current page.center) {Henri NOUGBODE};
+	\end{tikzpicture}
+}
+
+% ===== EN-TÊTE ET PIED DE PAGE =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Corrigé — Tableaux en Java}}
+\fancyhead[R]{\textit{Nougbode Marie Henri}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% ===== STYLE DU CODE JAVA =====
+\lstdefinestyle{java}{
+	language=Java,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue!80!black}\bfseries,
+	commentstyle=\color{green!50!black}\itshape,
+	stringstyle=\color{orange!80!black},
+	numberstyle=\tiny\color{gray},
+	numbers=left,
+	stepnumber=1,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	rulecolor=\color{gray!40},
+	backgroundcolor=\color{gray!5},
+	tabsize=4,
+	captionpos=b
+}
+
+% ===== BOÎTES COLORÉES =====
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{boiteRaisonnement}[1][]{
+	colback=blue!5!white,
+	colframe=blue!60!black,
+	fonttitle=\bfseries,
+	title=Raisonnement,
+	#1
+}
+
+\newtcolorbox{boiteResultat}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title=Résultat / Idée clé,
+	#1
+}
+
+\newtcolorbox{boiteErreur}[1][]{
+	colback=red!5!white,
+	colframe=red!60!black,
+	fonttitle=\bfseries,
+	title=Erreur à éviter,
+	#1
+}
+
+% ===== DÉBUT DU DOCUMENT =====
+\begin{document}
+	
+	% ===== PAGE DE TITRE =====
+	\begin{titlepage}
+		\centering
+		\vspace*{2cm}
+		{\LARGE\bfseries Corrigé des exercices sur les tableaux\par}
+		\vspace{0.5cm}
+		{\large Programmation Java — NFA031\par}
+		\vspace{1cm}
+		\rule{0.8\textwidth}{0.4pt}\\[1em]
+		{\large Rédigé par : \textbf{Nougbode Marie Henri}\par}
+		{\normalsize École Normale Supérieure de Natitingou, Bénin\par}
+		\vspace{0.5cm}
+		{\normalsize Mai 2026\par}
+		\rule{0.8\textwidth}{0.4pt}
+		\vfill
+		\begin{boiteResultat}[title=Objectifs pédagogiques]
+			Ce corrigé vise à accompagner l'étudiant pas à pas dans la compréhension des
+			tableaux en Java : déclaration, initialisation, parcours par boucle, recherche
+			d'éléments, modification et calcul de statistiques.
+		\end{boiteResultat}
+	\end{titlepage}
+	
+	% ===== EXERCICE 5.1.1 =====
+	\section*{Exercice 5.1.1 — Tableau d'entiers initialisé}
+	
+	On dispose du tableau suivant, déclaré et initialisé statiquement :
+	\begin{center}
+		\texttt{int[] tab = \{12, 15, 13, 10, 8, 9, 13, 14\};}
+	\end{center}
+	Ce tableau contient 8 éléments d'indices 0 à 7.
+	
+	\subsection*{Question 1 — Recherche d'appartenance (oui/non)}
+	
+	\begin{boiteRaisonnement}
+		On parcourt le tableau de l'indice 0 à l'indice \texttt{tab.length - 1} avec une boucle
+		\texttt{for}. On utilise un indicateur booléen \texttt{trouve} initialisé à \texttt{false}.
+		Dès qu'on trouve une case égale à la valeur cherchée, on passe \texttt{trouve} à
+		\texttt{true}. Après la boucle, on affiche le message approprié.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q1 — Appartenance au tableau}]
+		import java.util.Scanner;
+		
+		class RechercheAppartenance {
+			public static void main(String[] args) {
+				int[] tab = {12, 15, 13, 10, 8, 9, 13, 14};
+				Scanner sc = new Scanner(System.in);
+				boolean trouve = false;
+				
+				System.out.print("Entrez le nombre a chercher : ");
+				int n = sc.nextInt();
+				
+				for (int i = 0; i < tab.length; i++) {
+					if (tab[i] == n) {
+						trouve = true;
+						break;
+					}
+				}
+				
+				if (trouve) {
+					System.out.println("Oui, " + n + " appartient au tableau.");
+				} else {
+					System.out.println("Non, " + n + " n'appartient pas au tableau.");
+				}
+			}
+		}
+	\end{lstlisting}
+	
+	\begin{boiteResultat}
+		L'instruction \texttt{break} permet de quitter la boucle dès la première occurrence
+		trouvée, ce qui évite de continuer à chercher inutilement.
+	\end{boiteResultat}
+	
+	\subsection*{Question 2 — Affichage du dernier indice}
+	
+	\begin{boiteRaisonnement}
+		On utilise une variable \texttt{indice} initialisée à $-1$ (valeur sentinelle signifiant
+		« non trouvé »). On la met à jour à chaque fois qu'on trouve la valeur. Ainsi, à la fin
+		de la boucle, \texttt{indice} contient la position de la \emph{dernière} occurrence.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q2 — Dernier indice de la valeur}]
+		import java.util.Scanner;
+		
+		class DernierIndice {
+			public static void main(String[] args) {
+				int[] tab = {12, 15, 13, 10, 8, 9, 13, 14};
+				Scanner sc = new Scanner(System.in);
+				int indice = -1;
+				
+				System.out.print("Entrez le nombre a chercher : ");
+				int n = sc.nextInt();
+				
+				for (int i = 0; i < tab.length; i++) {
+					if (tab[i] == n) {
+						indice = i;
+					}
+				}
+				
+				if (indice != -1) {
+					System.out.println(n + " trouve en dernier a l'indice " + indice);
+				} else {
+					System.out.println(n + " n'est pas dans le tableau.");
+				}
+			}
+		}
+	\end{lstlisting}
+	
+	\begin{boiteResultat}
+		Exemple : si on cherche \texttt{13}, présent aux indices 2 et 6, le programme
+		affichera \texttt{indice = 6} (le dernier).
+	\end{boiteResultat}
+	
+	\subsection*{Question 3 — Affichage du premier indice}
+	
+	\begin{boiteRaisonnement}
+		Pour ne garder que le \emph{premier} indice, il suffit de n'enregistrer la valeur de
+		\texttt{i} dans \texttt{indice} que lorsque \texttt{indice} vaut encore $-1$.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q3 — Premier indice de la valeur}]
+		import java.util.Scanner;
+		
+		class PremierIndice {
+			public static void main(String[] args) {
+				int[] tab = {12, 15, 13, 10, 8, 9, 13, 14};
+				Scanner sc = new Scanner(System.in);
+				int indice = -1;
+				
+				System.out.print("Entrez le nombre a chercher : ");
+				int n = sc.nextInt();
+				
+				for (int i = 0; i < tab.length; i++) {
+					if (tab[i] == n && indice == -1) {
+						indice = i;
+					}
+				}
+				
+				if (indice != -1) {
+					System.out.println(n + " trouve en premier a l'indice " + indice);
+				} else {
+					System.out.println(n + " n'est pas dans le tableau.");
+				}
+			}
+		}
+	\end{lstlisting}
+	
+	\subsection*{Question 4 — Insertion à un indice donné}
+	
+	\begin{boiteRaisonnement}
+		On vérifie que l'indice est compris entre 0 et \texttt{tab.length - 1} avant
+		d'effectuer la modification. On affiche le tableau avant et après.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q4 — Insertion avec vérification d'indice}]
+		import java.util.Scanner;
+		
+		class InsertionElement {
+			public static void main(String[] args) {
+				int[] tab = {12, 15, 13, 10, 8, 9, 13, 14};
+				Scanner sc = new Scanner(System.in);
+				
+				System.out.print("Valeur a inserer : ");
+				int valeur = sc.nextInt();
+				System.out.print("Indice cible : ");
+				int indice = sc.nextInt();
+				
+				if (indice < 0 || indice >= tab.length) {
+					System.out.println("Indice invalide.");
+				} else {
+					System.out.print("Avant : ");
+					for (int i = 0; i < tab.length; i++) System.out.print(tab[i] + " ");
+					System.out.println();
+					
+					tab[indice] = valeur;
+					
+					System.out.print("Apres : ");
+					for (int i = 0; i < tab.length; i++) System.out.print(tab[i] + " ");
+					System.out.println();
+				}
+			}
+		}
+	\end{lstlisting}
+	
+	\subsection*{Question 5 — Échange de deux éléments}
+	
+	\begin{boiteRaisonnement}
+		L'échange nécessite une variable temporaire \texttt{temp} en trois étapes :
+		\texttt{temp = tab[i1]}, \texttt{tab[i1] = tab[i2]}, \texttt{tab[i2] = temp}.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q5 — Échange de deux cases}]
+		import java.util.Scanner;
+		
+		class EchangeElements {
+			public static void main(String[] args) {
+				int[] tab = {12, 15, 13, 10, 8, 9, 13, 14};
+				Scanner sc = new Scanner(System.in);
+				
+				System.out.print("Premier indice : ");
+				int i1 = sc.nextInt();
+				System.out.print("Deuxieme indice : ");
+				int i2 = sc.nextInt();
+				
+				if (i1 < 0 || i1 >= tab.length) {
+					System.out.println("Indice 1 invalide.");
+				} else if (i2 < 0 || i2 >= tab.length) {
+					System.out.println("Indice 2 invalide.");
+				} else {
+					System.out.print("Avant : ");
+					for (int i = 0; i < tab.length; i++) System.out.print(tab[i] + " ");
+					System.out.println();
+					
+					int temp = tab[i1];
+					tab[i1]  = tab[i2];
+					tab[i2]  = temp;
+					
+					System.out.print("Apres : ");
+					for (int i = 0; i < tab.length; i++) System.out.print(tab[i] + " ");
+					System.out.println();
+				}
+			}
+		}
+	\end{lstlisting}
+	
+	\begin{boiteErreur}
+		Ne jamais écrire \texttt{tab[i1] = tab[i2]; tab[i2] = tab[i1];} sans variable
+		temporaire : la première ligne écrase \texttt{tab[i1]} et l'échange est raté.
+	\end{boiteErreur}
+	
+	% ===== EXERCICE 5.1.2 =====
+	\newpage
+	\section*{Exercice 5.1.2 — Tableau saisi au clavier}
+	
+	\subsection*{Question 1 — Saisie et affichage}
+	
+	\begin{lstlisting}[style=java, caption={Q1 — Saisie et affichage}]
+		import java.util.Scanner;
+		
+		class SaisieTableau {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				int[] table = new int[6];
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Entier " + (i + 1) + " : ");
+					table[i] = sc.nextInt();
+				}
+				
+				System.out.print("Contenu : ");
+				for (int i = 0; i < table.length; i++) System.out.print(table[i] + " ");
+				System.out.println();
+			}
+		}
+	\end{lstlisting}
+	
+	\subsection*{Question 2 — Maximum d'un tableau d'entiers}
+	
+	\begin{boiteRaisonnement}
+		On initialise \texttt{max} avec \texttt{table[0]}, puis on parcourt à partir de
+		l'indice 1 en mettant \texttt{max} à jour dès qu'on trouve un élément plus grand.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q2 — Plus grand entier}]
+		import java.util.Scanner;
+		
+		class MaxEntiers {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				int[] table = new int[6];
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Entier " + (i + 1) + " : ");
+					table[i] = sc.nextInt();
+				}
+				
+				int max = table[0];
+				for (int i = 1; i < table.length; i++) {
+					if (table[i] > max) max = table[i];
+				}
+				
+				System.out.println("Plus grand : " + max);
+			}
+		}
+	\end{lstlisting}
+	
+	\subsection*{Question 3 — Maximum d'un tableau de caractères}
+	
+	\begin{boiteRaisonnement}
+		En Java, \texttt{char} est numérique (code Unicode). La comparaison \texttt{>}
+		entre deux \texttt{char} est donc valide et donne le « plus grand » au sens
+		lexicographique.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q3 — Plus grand caractère}]
+		import java.util.Scanner;
+		
+		class MaxCaracteres {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				char[] table = new char[6];
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Caractere " + (i + 1) + " : ");
+					table[i] = sc.next().charAt(0);
+				}
+				
+				char max = table[0];
+				for (int i = 1; i < table.length; i++) {
+					if (table[i] > max) max = table[i];
+				}
+				
+				System.out.println("Plus grand : " + max);
+			}
+		}
+	\end{lstlisting}
+	
+	\begin{boiteResultat}
+		L'algorithme est \emph{identique} à celui des entiers. Seuls les types changent :
+		\texttt{int} $\rightarrow$ \texttt{char}, \texttt{nextInt()} $\rightarrow$
+		\texttt{next().charAt(0)}.
+	\end{boiteResultat}
+	
+	\subsection*{Question 4 — Calcul de la moyenne}
+	
+	\begin{boiteErreur}
+		Si \texttt{somme} est déclarée \texttt{int}, la division \texttt{somme / table.length}
+		sera entière et perdra la partie décimale. Il faut utiliser \texttt{double}.
+	\end{boiteErreur}
+	
+	\begin{lstlisting}[style=java, caption={Q4 — Moyenne}]
+		import java.util.Scanner;
+		
+		class MoyenneTableau {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				int[] table = new int[6];
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Entier " + (i + 1) + " : ");
+					table[i] = sc.nextInt();
+				}
+				
+				double somme = 0.0;
+				for (int i = 0; i < table.length; i++) somme += table[i];
+				
+				System.out.printf("Moyenne : %.2f%n", somme / table.length);
+			}
+		}
+	\end{lstlisting}
+	
+	\subsection*{Question 5 — Tableau de taille n saisie par l'utilisateur}
+	
+	\begin{lstlisting}[style=java, caption={Q5 — Tableau dynamique de n caractères}]
+		import java.util.Scanner;
+		
+		class TableauDynamique {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				System.out.print("Nombre d'elements : ");
+				int n = sc.nextInt();
+				char[] table = new char[n];
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Caractere " + (i + 1) + " : ");
+					table[i] = sc.next().charAt(0);
+				}
+				
+				System.out.print("Tableau : ");
+				for (int i = 0; i < table.length; i++) System.out.print(table[i] + " ");
+				System.out.println();
+			}
+		}
+	\end{lstlisting}
+	
+	% ===== EXERCICE 5.1.3 =====
+	\newpage
+	\section*{Exercice 5.1.3 — Nombre de lettres dans un tableau}
+	
+	\subsection*{Question 1 — Comparaison par codes ASCII}
+	
+	\begin{boiteRaisonnement}
+		Majuscules : \texttt{'A'} (65) à \texttt{'Z'} (90). Minuscules : \texttt{'a'} (97)
+		à \texttt{'z'} (122). Si le caractère est dans l'intervalle des majuscules, on
+		incrémente les deux compteurs.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q1 — Comptage par comparaisons ASCII}]
+		import java.util.Scanner;
+		
+		class CompteLettresManuel {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				char[] table = new char[10];
+				int nbLettres = 0, nbMajuscules = 0;
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Caractere " + (i + 1) + " : ");
+					table[i] = sc.next().charAt(0);
+				}
+				
+				for (int i = 0; i < table.length; i++) {
+					if (table[i] >= 'A' && table[i] <= 'Z') {
+						nbLettres++;
+						nbMajuscules++;
+					} else if (table[i] >= 'a' && table[i] <= 'z') {
+						nbLettres++;
+					}
+				}
+				
+				System.out.println("Lettres    : " + nbLettres);
+				System.out.println("Majuscules : " + nbMajuscules);
+			}
+		}
+	\end{lstlisting}
+	
+	\subsection*{Question 2 — Méthodes de la classe \texttt{Character}}
+	
+	\begin{boiteRaisonnement}
+		\texttt{Character.isLetter(c)} retourne \texttt{true} si \texttt{c} est une lettre
+		(accents inclus). \texttt{Character.isUpperCase(c)} retourne \texttt{true} si
+		\texttt{c} est une majuscule. Les deux tests sont indépendants dans la boucle.
+	\end{boiteRaisonnement}
+	
+	\begin{lstlisting}[style=java, caption={Q2 — Comptage avec Character}]
+		import java.util.Scanner;
+		
+		class CompteLettresCharacter {
+			public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+				char[] table = new char[10];
+				int nbLettres = 0, nbMajuscules = 0;
+				
+				for (int i = 0; i < table.length; i++) {
+					System.out.print("Caractere " + (i + 1) + " : ");
+					table[i] = sc.next().charAt(0);
+				}
+				
+				for (int i = 0; i < table.length; i++) {
+					if (Character.isUpperCase(table[i])) nbMajuscules++;
+					if (Character.isLetter(table[i]))    nbLettres++;
+				}
+				
+				System.out.println("Lettres    : " + nbLettres);
+				System.out.println("Majuscules : " + nbMajuscules);
+			}
+		}
+	\end{lstlisting}
+	
+	\begin{boiteResultat}
+		\texttt{Character.isLetter()} reconnaît aussi \texttt{'é'}, \texttt{'à'},
+		\texttt{'ç'}, etc. : version plus robuste que la comparaison ASCII.
+	\end{boiteResultat}
+	
+	% ===== RÉCAPITULATIF =====
+	\newpage
+	\section*{Récapitulatif des notions abordées}
+	
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			\textbf{Notion} & \textbf{Syntaxe / Technique} \\
+			\hline
+			Initialisation statique  & \texttt{int[] tab = \{12, 15, ...\};} \\
+			Allocation dynamique     & \texttt{int[] tab = new int[n];} \\
+			Longueur d'un tableau    & \texttt{tab.length} \\
+			Parcours complet         & \texttt{for (int i = 0; i < tab.length; i++)} \\
+			Valeur sentinelle        & \texttt{int indice = -1;} \\
+			Échange de deux cases    & \texttt{temp = a; a = b; b = temp;} \\
+			Moyenne (type réel)      & Déclarer \texttt{double somme} \\
+			Test lettre / majuscule  & \texttt{Character.isLetter()}, \texttt{isUpperCase()} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vfill
+	\begin{center}
+		\textit{Corrigé rédigé par Nougbode Marie Henri — ENS Natitingou, Bénin — Mai 2026}
+	\end{center}
+	
+\end{document}

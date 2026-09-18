@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[a4paper]{geometry}
+\usepackage{babel}
+\title{\emph{\underline{CORRIGE DES TD DE CONVERGENCE ET\\ \underline{EQUATION DIFFERENCIELLE}}}}
+\author{ Deux etudiants de L'ENS natitingou }
+
+\begin{document}
+	\maketitle
+	\begin{enumerate}
+		\item \textbf{INTEGRATION}
+		  EXERCICE 1 \\
+		  Calculons les limites des suites suivants en utilisant les sommes de riemann \\
+		   \begin{itemize}
+		   	\item \[a_n=\frac{1}{n}\sum_{k=1}^{n}\frac{n^2}{(n+k)^2}\] \\
+		   $	a_n=\frac{1}{n}\sum_{k=1}^{n}\frac{1}{(1+\frac{k}{n})^2} = \frac{1}{n}\sum_{k=1}^{n}f(\frac{k}{n})$  avec $f:]-1;+\infty[ \mapsto\mathbb{R}  ,\\  telque     $x\mapsto\frac{1}{(1+x)^2}$ \\ d'ou ,
+		  \lim_x\to+\inftya_n = \int_{0}^{1}\frac{1}{(1+x)^2}=\left[ -\frac{1}{(1+x)^2}\right] =\frac{1}{2} \\
+		  \item \[b_n=\frac{1}{n}\sum_{k=0}^{n}\cos^2(\frac{k\pi}{n})\] \\  $b_n=\frac{1}{\pi}\times\frac{\pi-0}{n}$\sum_{k=1}^{n}\cos^2(0+\frac{(\pi-0)k}{n})$ \\ $b_n=\frac{1}{\pi}\frac{\pi}{n}\sum_{k}^{n}f(\frac{k}{n})  \\ $f:\mathbb{R}\mapsto\mathbb{R} , x$\mapsto\cos^2(x)$ \\ 
+		  ainsi $\lim_x\to+\infty b_n = \frac{1}{n}\int_{0}^{\pi}\cos^2xdx = \frac{1}{\pi}\int_{0}^{1}\frac{\cos2x +1}{2}dx\\= \frac{1}{2\pi}(\frac{1}{2}\sin2\pi +\pi - \frac{1}{2}\sin0 - 0) \\ d 'ou $\lim b_n=\frac{1}{2}$ \\
+		  \item \[C_n=\sum_{k=1}^{n}\sqrt{\frac{n+k}{n^3+kn^2}}\]
+		  $c_n=\sum_{k=1}^{n}$\sqrt{\frac{1}{n^2}(\frac{1+\frac{k}{n}}{1-\frac{k}{n}})} =\frac{1}{n}\sum_{k=1}^{n}\sqrt{\frac{1+\frac{k}{n}}{1-\frac{k}{n}}}$ \begin{align}
+		  	$b_n=\frac{1-0}{n}\sum_{k=1}^{n}f(0+\frac{k(1-0)}{n})\\
+		  	$c_n=\frac{1-0}{n}\sum_{k=1}{}f(\frac{k}{n})
+		  \end{align}
+		  avec $f(x)=\sqrt{\frac{1+x}{1-x}}$ ainsi  la limite de C_n revient \grave{a} \\ $\int_{0}^{1}\sqrt{\frac{1+x}{1-x}dx$ = $\int_{0}^{1}\frac{1+x}{\sqrt{(1-x)^2}}dx$ ce qui donne par un calcule bien fait $\left[ arcsin(x)\right]_{0}^{1} -\left[ \sqrt{1-x^2\right] }_{0}^{1} = \frac{\pi- 2}{2}
+ 		   \end{itemize}\\
+ 		\underline{EXERCICE}  \\  
+ 		   Justifions que les integrale suivants convergent et trouvons leurs valeurs \\ \begin{itemize}
+ 		   	\item I_1=\int_{0}^{+\infty}x^2\mathrm{e^{-x}}dx\\ $\liminf(x^2(x^2\mathrm{e^{-x}}))=0$ or $0\in\mathbb{R}$ d'apres les criteres de riemman , I_1 converge   . $+\infty$ est une borne impropre a cet integrale donc $\exists t$ tel que I_1= \lim_x\to+\infty\int_{0}^{x}t^2\mathrm{e^{-t}}=2  \\
+ 		   	\item $I_2=\int_{-\infty}^{+\infty}\frac{1}{(1+x^2)}$ etant une fonction paire on a donc $I_2=\int_{0}^{+\infty}\frac{1}{1+x^2}\\ $\lim_x\to\infty x^2(\frac{1}{1+x^2})=1$ d'apres le critere de riemann $I_2$ converge\\ Il est facile de voir $I_2$ est une primitive de la fonction arctangente un calcul bien fait nous donne $I_2=\pi$\\
+ 		   	\item $I_3=\int_{1}^{+\infty}\frac{\sqrt{x^2 + 1}}{x^3 + x}dx$ \\ or $\lim\frac{\frac{\sqrt{x^2+1}}{x^3+x}}{\frac{1}{x^2}}=\lim(\frac{x^2\sqrt{x^2+1}}{x^3+x})=\lim\frac{\sqrt{x^2+1}}{x+\frac{1}{x}}=\lim\frac{\sqrt{1+\frac{1}{x^2}}}{1+\frac{1}{x^2}}=1$ donc au voisinage de l'infini , $I_3$ et $\int\frac{1}{x^2}$(integrale de riemman) ont m\{e}me nature ainsi elle converge \\ Determinons sa valeur \\ \footnote{A travers un changement de vraiable de $X=x^2 +1$ et puis un autre de $y=\sqrt{x}$ on trouve $I_3=2\ln(3+2\sqrt{2})} \\ 
+ 		\end{itemize}
+ 		   	 \underline{EXERCICE 1.3}\\ Etude de convergence
+ 		\begin{itemize}
+ 			\item $I_5=\int_{0}^{\pi}\frac{1}{1+\cos(x)}dx$\\
+ 			$\pi$ est une borne impropre de cet integrale ,ainsi $\exists t \in]0;\pi[$ telque $I_5=\lim_{t\to\pi}I_5(t)$ avec $I_5(t)=\int_{0}^{t}\frac{1}{1+\cos x}dx=\int_{0}^{t}\frac{1}{2(\cos^2\frac{x}{2})}=\frac{1}{2}\tan(\frac{t}{2})$ alors on a $I_5=\lim_{t\to\pi}\frac{1}{2}\tan\frac{t}{2}=$
+ 			\item $I_6=\int_{2}^{+\infty}\frac{\arctan x}{x^2}dx$ \\
+ 			on a $\lvert \frac{\arcsin x}{x^2 - 1}\rVert  \leq \frac{\pi}{2(x^2 - 1)} \\
+ 		\end{itemize}  \\
+  		\item  \underline{EQUATION DIFFERENTIELLE}\\ \underline{EXERCICE 2.1} : Résolvons l'equation differentielle\\
+ 		\begin{itemize}
+ 			\item $ y^,+y=xe^{-x} + 1$\\
+ 			l'equation homogene de associe a cette equation est $y^,+y=0$ et a pour solution $y_h:x\mapsto ke^{-x} ,\forall x\in\mathbb{R}, k=cste$ par contre une equation particuliere de cette equation serais donc sous la forme de $y_p=\lambda e^{-x} , \lambda\in\mathbb{R}$ \\ posons $Q(x)=\lambda e^{-x}$ \\
+  			Résolvons $Q^, + Q = xe^{-x} +1$ on a $\lambda^, e^{-x} = xe^{-x} +1 \leftrightarrow \lambda=\frac{1}{2}x^2 +e^{-x}$ ainsi $\lambda e^{-x}=\frac{1}{2}x^2 e^{-x} + 1$ D'ou une solution generale de cette equation est alors $y=\frac{1}{2}x^2 e^{-x} + 1 + ke^{-x} , k=cste$\\  \item $y^{,,} - y = \sin x \cos(3x)$ \\ une equation caracteristique de cette equation est $\phi(r)=r^2 - 1=0$  $\phi(r)=0 \leftrightarrows r=i /  r= -i$ 	les solutions de cette equation sont donc les fonction definies sur \mathbb{R} de la forme $\forall x \in \mathbb{R}, y_h=B\sin x + A \cos x ; (A;B)\in \mathbb{R}$ resolvons d'abord l'equation $y^,, + y =\sin x , \phi(i)=i^2 +1 =0$		 Une solution particuliere est sous la forme $P(x)= x(a\cos x+ b\sin x)$  \\ ¨$\forall x \in\mathbb{R}, P^,(x)= acosx + bsin x +x(-asinx + bcos x) = bcos x + (a+bx)sinx -asinx +(b-ax)cos x$ P etant le solution de l'equation alors on a  $P^{,,} +P=sinx$ et  on a $P^,,(x)=(2b - ax)cos x -(2a + bx )sinx$ AINSI EN POSANT $(2b - ax +ax)cosx - ( 2a +bx- bx)sinx=sinx$ par identification on a $\begin{cases}
+ 				-2a = 1 \\
+ 				2b= 0
+ 			\end{cases}$ ainsi $a=-\frac{1}{2}$ et  $ b=0$\\ ainsi $P(x)= -\frac{1}{2}\ x \cos x$ \\ * Resolvons a present $y^{,,} +y = \cos 3x$ Posons $y_1=\cos x$  et $y_2=\sin x$\\ une solution particuliere de cette de cette equation est sous la forme $x\mapsto A(x)y_1 + B(x)y_2$ un calcule bien fait donne   $A = -\frac{1}{8}\cos 4x + \frac{1}{4}\cos 2x$ et $B= \frac{1}{8}\sin 4x + \frac{1}{4}\sin 2x$ et la solution generale sera sous la forme $y_p + Bsin x + Acosx  , (A.B)\in \mathbb{R}$
+ 		\end{itemize}\\ 
+ 		\item \underline{SUITE}\\ Etudions la convergence de la serie numerique $U_n$ : 
+ 		  \begin{itemize}
+ 		  	\item$ U_n=\frac{n-1}{2n + 1}$ \\ Pour n qui ten vers l'infini  $U_n$ tend vers $\frac{1}{2}$ ainsi elle \cdots    gente 
+ 		  	\item $U_n= \sin(\frac{1}{n^3})$  $\lim_{n\to+\infty} n^3U_n=1$ d'apres les criteres de riemman  $\sum U_n$ converge  \\ \item $U_n=\arctan(n^2 + 1)$ \\ la limite a l'infni de $U_n$ donne $\frac{\pi}{2}$ d'ou elle diverge \\            
+ 		  \end{itemize} \\  \footnote{Ce document est imcomplet est a completer       \\ mariekokou06@gamil.com    et DA ALLADA setognon raoul}
+ 		     
+	\end{enumerate}
+	
+	
+	
+	
+	
+	
+	
+\end{document}
